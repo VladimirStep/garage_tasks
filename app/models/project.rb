@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
-  validates :name, presence: true, length: { in: 2..100 }
+  has_many :tasks, dependent: :destroy
+
+  validates :name, presence: true, length: { in: 2..50 }
 end
