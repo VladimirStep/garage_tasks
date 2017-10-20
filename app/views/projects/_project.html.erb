@@ -16,4 +16,7 @@
   <div class="panel-body">
     <%= render partial: 'new_task_form', locals: { project: project } %>
   </div>
+  <div class="tasks-list">
+    <%= render project.tasks %>
+  </div>
 </div>
