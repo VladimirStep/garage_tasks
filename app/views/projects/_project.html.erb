@@ -1,0 +1,10 @@
+<div class="panel panel-primary text-left" data-project-id="<%= project.id %>">
+  <div class="panel-heading">
+    <%= project.name %>
+    <div class="pull-right">
+      <%= link_to 'Edit', '#' %>
+      <%= link_to 'Delete', project_path(project.id), method: :delete, remote: true %>
+    </div>
+  </div>
+  <div class="panel-body"></div>
+</div>
