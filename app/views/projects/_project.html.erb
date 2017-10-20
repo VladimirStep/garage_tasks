@@ -11,6 +11,9 @@
       <%= link_to 'Edit', edit_project_path(project), remote: true %>
       <%= link_to 'Delete', project_path(project), method: :delete, remote: true %>
     </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="panel-body"></div>
+  <div class="panel-body">
+    <%= render partial: 'new_task_form', locals: { project: project } %>
+  </div>
 </div>
