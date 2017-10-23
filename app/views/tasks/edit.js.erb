@@ -2,6 +2,5 @@ var task_row = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-
 task_row.html('<%= escape_javascript(render partial: 'form', locals: { task: @task }) %>');
 
 $('input#task_name', task_row).blur(function(){
-    console.log($(this).closest('form'));
-    $(this).closest('form').submit();
+    $(this).closest('form').trigger('submit.rails');
 });

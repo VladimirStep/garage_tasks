@@ -1,0 +1,2 @@
+var task_row = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list div[data-task-id=<%= @task.id %>]');
+task_row.html('<%= escape_javascript(render partial: 'task_row', locals: { task: @task }) %>');
