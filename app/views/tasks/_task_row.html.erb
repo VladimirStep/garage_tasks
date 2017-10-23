@@ -1,0 +1,9 @@
+<tr data-task-id="<%= task.id %>">
+  <td><%= task.status %></td>
+  <td><%= task.name %></td>
+  <td><%= task.deadline if task.deadline %></td>
+  <td><%= link_to 'Up', '#' %></td>
+  <td><%= link_to 'Down', '#' %></td>
+  <td><%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-xs btn-default' %></td>
+  <td><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, class: 'btn btn-xs btn-danger' %></td>
+</tr>
