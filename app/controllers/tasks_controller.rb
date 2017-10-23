@@ -3,6 +3,10 @@ class TasksController < ApplicationController
 
   def create
     @task = @project.tasks.create(task_params)
+    respond_to do |format|
+      format.html { redirect_to projects_path }
+      format.js
+    end
   end
 
   def edit

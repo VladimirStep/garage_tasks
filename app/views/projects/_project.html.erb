@@ -15,12 +15,13 @@
   </div>
   <div class="panel-body">
     <%= render partial: 'new_task_form', locals: { project: project } %>
-  </div>
-  <div class="tasks-list">
-    <table class="table">
-      <tbod>
+    <br>
+    <div class="tasks-list">
+      <table class="table">
+        <tbody>
         <%= render project.tasks %>
-      </tbod>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
