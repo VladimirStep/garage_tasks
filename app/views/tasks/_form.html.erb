@@ -1,15 +1,13 @@
-<tr data-task-id="<%= task.id %>">
-  <%= form_for task, url: project_task_path(task.project, task) do |form| %>
-      <td></td>
-      <td>
-        <div class="form-group">
-          <%= form.text_field :name, autofocus: true, class: 'form-control', required: true, maxlength: '50', minlength: '2' %>
-        </div>
-      </td>
-      <td><%= form.submit %></td>
-  <% end %>
-  <td><%= link_to 'Up', '#' %></td>
-  <td><%= link_to 'Down', '#' %></td>
-  <td><%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-xs btn-default' %></td>
-  <td><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></td>
-</tr>
+<%= form_for task, url: project_task_path(task.project, task) do |form| %>
+  <div class="col-xs-2"></div>
+  <div class="col-xs-4">
+    <div class="form-group">
+      <%= form.text_field :name, autofocus: true, class: 'form-control', required: true, maxlength: '50', minlength: '2' %>
+    </div>
+  </div>
+  <div class="col-xs-2"></div>
+<% end %>
+<div class="col-xs-1"><%= link_to 'Up', '#' %></div>
+<div class="col-xs-1"><%= link_to 'Down', '#' %></div>
+<div class="col-xs-1"><%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-xs btn-default' %></div>
+<div class="col-xs-1"><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></div>

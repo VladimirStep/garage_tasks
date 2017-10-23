@@ -1,9 +1,7 @@
-<tr data-task-id="<%= task.id %>">
-  <td><%= task.status %></td>
-  <td><%= task.name %></td>
-  <td><%= task.deadline if task.deadline %></td>
-  <td><%= link_to 'Up', '#' %></td>
-  <td><%= link_to 'Down', '#' %></td>
-  <td><%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-xs btn-default' %></td>
-  <td><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></td>
-</tr>
+<div class="col-xs-2"><%= task.status %></div>
+<div class="col-xs-4"><%= task.name %></div>
+<div class="col-xs-2"><%= task.deadline if task.deadline %></div>
+<div class="col-xs-1"><%= link_to 'Up', '#' %></div>
+<div class="col-xs-1"><%= link_to 'Down', '#' %></div>
+<div class="col-xs-1"><%= link_to 'Edit', edit_project_task_path(task.project, task), remote: true, class: 'btn btn-xs btn-default' %></div>
+<div class="col-xs-1"><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></div>

@@ -1,5 +1,7 @@
-<% if controller_name == 'tasks' && action_name == 'edit' && task.id == @task.id %>
-    <%= render partial: 'tasks/form', locals: { task: task } %>
-<% else %>
-    <%= render partial: 'tasks/task_row', locals: { task: task } %>
-<% end %>
+<div class="row" data-task-id="<%= task.id %>">
+  <% if controller_name == 'tasks' && action_name == 'edit' && task.id == @task.id %>
+      <%= render partial: 'tasks/form', locals: { task: task } %>
+  <% else %>
+      <%= render partial: 'tasks/task_row', locals: { task: task } %>
+  <% end %>
+</div>

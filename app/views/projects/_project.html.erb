@@ -17,11 +17,7 @@
     <%= render partial: 'tasks/new_task_form', locals: { project: project } %>
     <br>
     <div class="tasks-list">
-      <table class="table">
-        <tbody>
-        <%= render project.tasks %>
-        </tbody>
-      </table>
+      <%= render project.tasks %>
     </div>
   </div>
 </div>
