@@ -17,7 +17,7 @@
     <%= render partial: 'tasks/new_task_form', locals: { project: project } %>
     <br>
     <div class="tasks-list">
-      <%= render project.tasks %>
+      <%= render project.tasks.order(:priority) %>
     </div>
   </div>
 </div>
