@@ -1,2 +1,6 @@
-$('#projects-list div[data-project-id=<%= @project.id %>] .project-name')
-    .html('<%= escape_javascript(render partial: 'form', locals: { project: @project }) %>');
+var current_project = $('#projects-list div[data-project-id=<%= @project.id %>] .project-name');
+current_project.html('<%= escape_javascript(render partial: 'form', locals: { project: @project }) %>');
+
+$('input#project_name', current_project).blur(function(){
+    $(this).closest('form').trigger('submit.rails');
+});
