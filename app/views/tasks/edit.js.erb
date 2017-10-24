@@ -1,11 +1,14 @@
 var task_row = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list div[data-task-id=<%= @task.id %>]');
+
 task_row.html('<%= escape_javascript(render partial: 'form', locals: { task: @task }) %>');
 
-$('input#task_name, select#task_status, input#task_deadline', task_row).blur(function(){
+var task_form = $('form.edit_task', task_row);
+
+task_form.focusout(function(){
     $(this).closest('form').submit();
 });
 
-$('.edit_task').validate({
+task_form.validate({
     submitHandler: function(form){
         $(form).trigger('submit.rails');
     }
@@ -13,7 +16,7 @@ $('.edit_task').validate({
 
 $(function () {
     $('#datetimepicker').datetimepicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
+        format: 'YYYY-MM-DD hh:mm',
         sideBySide: true,
         useCurrent: false,
         showClear: true,
