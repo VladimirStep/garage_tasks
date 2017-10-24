@@ -11,7 +11,12 @@
   </div>
   <div class="col-xs-2">
     <div class="form-group">
-      <%= form.datetime_select :deadline, {}, class: 'form-control' %>
+      <div class='input-group date' id='datetimepicker'>
+        <%= form.text_field :deadline, class: 'form-control' %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
     </div>
   </div>
 <% end %>
@@ -19,3 +24,5 @@
 <div class="col-xs-1"><%= link_to 'Down', down_project_task_path(task.project, task), remote: true %></div>
 <div class="col-xs-1"><%= link_to 'Edit', edit_project_task_path(task.project, task), remote: true, class: 'btn btn-xs btn-default' %></div>
 <div class="col-xs-1"><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></div>
+
+<%= javascript_include_tag 'task_form' %>
