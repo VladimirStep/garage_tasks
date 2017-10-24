@@ -2,5 +2,21 @@ var task_row = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-
 task_row.html('<%= escape_javascript(render partial: 'form', locals: { task: @task }) %>');
 
 $('input#task_name, select#task_status, input#task_deadline', task_row).blur(function(){
-    $(this).closest('form').trigger('submit.rails');
+    $(this).closest('form').submit();
+});
+
+$('.edit_task').validate({
+    submitHandler: function(form){
+        $(form).trigger('submit.rails');
+    }
+});
+
+$(function () {
+    $('#datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD hh:mm:ss',
+        sideBySide: true,
+        useCurrent: false,
+        showClear: true,
+        showClose: true
+    });
 });
