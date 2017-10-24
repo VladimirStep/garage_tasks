@@ -1,3 +1,14 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on("turbolinks:load", function(){
+    $('.new-task form').each(function () {
+        $(this).validate({
+            submitHandler: function(form){
+                $(form).trigger('submit.rails');
+                $('input.task-name', form).val('');
+            }
+        });
+        $(this).focusout(function(){
+            $('input.task-name', $(this)).val('');
+            $(this).validate().resetForm();
+        });
+    });
+});

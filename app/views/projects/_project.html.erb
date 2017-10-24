@@ -14,7 +14,9 @@
     <div class="clearfix"></div>
   </div>
   <div class="panel-body">
-    <%= render partial: 'tasks/new_task_form', locals: { project: project } %>
+    <div class="new-task">
+      <%= render partial: 'tasks/new_task_form', locals: { project: project } %>
+    </div>
     <br>
     <div class="tasks-list">
       <%= render project.tasks.order(:priority) %>

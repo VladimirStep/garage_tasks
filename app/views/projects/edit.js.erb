@@ -2,7 +2,7 @@ var current_project = $('#projects-list div[data-project-id=<%= @project.id %>] 
 
 current_project.html('<%= escape_javascript(render partial: 'form', locals: { project: @project }) %>');
 
-var project_form = $('.edit_project', current_project)
+var project_form = $('form.edit_project', current_project)
 
 project_form.focusout(function(){
     $(this).closest('form').submit();
