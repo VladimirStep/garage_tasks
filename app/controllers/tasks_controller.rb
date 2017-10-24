@@ -34,6 +34,36 @@ class TasksController < ApplicationController
     end
   end
 
+  def up
+    @replaced_task = @task.higher_item
+    if @task.move_higher && @replaced_task
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js { render 'move' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js { render body: nil }
+      end
+    end
+  end
+
+  def down
+    @replaced_task = @task.lower_item
+    if @task.move_lower && @replaced_task
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js { render 'move' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js { render body: nil }
+      end
+    end
+  end
+
   private
 
   def set_projects
