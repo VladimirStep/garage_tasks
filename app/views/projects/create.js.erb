@@ -1,1 +1,22 @@
 $('#projects-list').append('<%= escape_javascript(render @project) %>');
+
+$(function(){
+    var current_form = $('#projects-list div[data-project-id=<%= @project.id %>] .new-task form');
+    var input_task_field  = $('input.task-name', current_form);
+
+    current_form.validate({
+        onfocusout: false,
+        submitHandler: function(form){
+            $(form).trigger('submit.rails')
+        }
+    });
+
+    input_task_field.focusout(function(){
+        $(this).val('');
+        current_form.validate().resetForm();
+    });
+
+    current_form.on('ajax:complete', function(){
+        input_task_field.val('');
+    });
+});
