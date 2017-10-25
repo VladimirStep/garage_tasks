@@ -17,4 +17,5 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require jquery.validate
+//= require jquery-ui/widgets/sortable
 //= require projects

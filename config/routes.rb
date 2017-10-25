@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         get 'up'
         get 'down'
       end
+      collection do
+        post 'reorder'
+      end
     end
   end
 end

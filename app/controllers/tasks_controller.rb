@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_projects
   before_action :set_project
-  before_action :set_task, except: [:create]
+  before_action :set_task, except: [:create, :reorder]
 
   def create
     @task = @project.tasks.create(task_params)
@@ -61,6 +61,14 @@ class TasksController < ApplicationController
         format.html { redirect_to projects_path }
         format.js { render body: nil }
       end
+    end
+  end
+
+  def reorder
+    @project.reorder_tasks(params[:order])
+    respond_to do |format|
+      format.html { redirect_to projects_path }
+      format.js { render body: nil }
     end
   end
 
