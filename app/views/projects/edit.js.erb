@@ -1,15 +1,17 @@
-var current_project = $('#projects-list div[data-project-id=<%= @project.id %>] .project-name');
+$(function(){
+    var current_project = $('#projects-list div[data-project-id=<%= @project.id %>] .project-name');
 
-current_project.html('<%= escape_javascript(render partial: 'form', locals: { project: @project }) %>');
+    current_project.html('<%= escape_javascript(render partial: 'form', locals: { project: @project }) %>');
 
-var project_form = $('form.edit_project', current_project)
+    var project_form = $('form.edit_project', current_project)
 
-project_form.focusout(function(){
-    $(this).closest('form').submit();
-});
+    project_form.focusout(function(){
+        $(this).closest('form').submit();
+    });
 
-project_form.validate({
-    submitHandler: function(form){
-        $(form).trigger('submit.rails');
-    }
+    project_form.validate({
+        submitHandler: function(form){
+            $(form).trigger('submit.rails');
+        }
+    });
 });

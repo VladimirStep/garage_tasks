@@ -1,6 +1,8 @@
-var task_list = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list');
-var current_task = $('div[data-task-id=<%= @task.id %>]', task_list);
-var replaced_task = $('div[data-task-id=<%= @replaced_task.id %>]', task_list);
+$(function(){
+    var task_list = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list');
+    var current_task = $('div[data-task-id=<%= @task.id %>]', task_list);
+    var replaced_task = $('div[data-task-id=<%= @replaced_task.id %>]', task_list);
 
-replaced_task.replaceWith('<%= escape_javascript(render @task) %>');
-current_task.replaceWith('<%= escape_javascript(render @replaced_task) %>');
+    replaced_task.replaceWith('<%= escape_javascript(render @task) %>');
+    current_task.replaceWith('<%= escape_javascript(render @replaced_task) %>');
+});

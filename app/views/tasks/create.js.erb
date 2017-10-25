@@ -1,2 +1,2 @@
-var task_list = $('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list');
-task_list.append('<%= escape_javascript(render @task) %>');
+$('#projects-list div[data-project-id=<%= @project.id %>] .tasks-list')
+    .append('<%= escape_javascript(render @task) %>');
