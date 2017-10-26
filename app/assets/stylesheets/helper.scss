@@ -8,3 +8,10 @@
   box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
 }
 
+.inner-text-shadow {
+  color: transparent;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.95);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}

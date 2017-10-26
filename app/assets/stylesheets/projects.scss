@@ -13,7 +13,65 @@
 
   .project-heading {
     height: 50px;
-    font-size: 22px;
-    color: white;
+
+    .project-icon {
+      margin: 9px 15px 0 20px;
+      font-size: 26px;
+      color: #222222;
+      opacity: 0.5;
+    }
+
+    .project-name {
+      p {
+        font-size: 20px;
+        color: white;
+        margin: 10px 5px 0 5px;
+      }
+
+      form {
+        margin-top: 7px;
+      }
+    }
+
+    .project-links {
+      color: transparent;
+      font-size: 18px;
+      padding-right: 10px;
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        span {
+          color: transparent;
+          margin: 14px 15px 0 15px;
+        }
+      }
+      span.divider {
+        font-size: 28px;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .project-links {
+        color: #98b0d2;
+
+        a span {
+          color: #98b0d2;
+
+          &:hover {
+            color: #8398b2;
+          }
+        }
+      }
+    }
+  }
+
+  .project-body {
+
   }
 }
