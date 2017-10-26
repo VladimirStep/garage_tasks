@@ -1,5 +1,5 @@
-<div class="panel panel-primary text-left" data-project-id="<%= project.id %>">
-  <div class="panel-heading">
+<div class="project-item text-left" data-project-id="<%= project.id %>">
+  <div class="project-heading blue-gradient">
     <div class="project-name pull-left">
       <% if controller_name == 'projects' && action_name == 'edit' && project.id == @project.id %>
         <%= render partial: 'form', locals: { project: project } %>

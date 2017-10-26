@@ -1,0 +1,10 @@
+.blue-gradient {
+  border: 1px solid #315589;
+  background: #486eb3; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#527dbf, #3961a2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#527dbf, #3961a2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#527dbf, #3961a2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#527dbf, #3961a2); /* Standard syntax */
+  box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+}
+
