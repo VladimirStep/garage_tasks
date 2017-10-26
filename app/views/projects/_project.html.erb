@@ -22,7 +22,10 @@
     <div class="clearfix"></div>
   </div>
   <div class="project-body">
-    <div class="new-task">
+    <div class="new-task gray-gradient">
+      <div class="new-task-icon inner-text-shadow pull-left">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </div>
       <%= render partial: 'tasks/new_task_form', locals: { project: project } %>
     </div>
     <br>

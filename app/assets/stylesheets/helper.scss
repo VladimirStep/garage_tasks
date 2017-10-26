@@ -8,9 +8,40 @@
   box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
 }
 
+.gray-gradient {
+  border: 1px solid #b4b2aa;
+  background: #d6d6d6; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#e0e0e0, #cdcdcd); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#e0e0e0, #cdcdcd); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#e0e0e0, #cdcdcd); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#e0e0e0, #cdcdcd); /* Standard syntax */
+  box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+}
+
+.green-gradient, .green-gradient:focus, .green-gradient:active {
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #447557;
+  background: #70a789; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#91c8ab, #508767); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#91c8ab, #508767); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#91c8ab, #508767); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#91c8ab, #508767); /* Standard syntax */
+  box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+  &:hover {
+    color: #fff;
+    background: #558a6c; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#7db497, #3e7355); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#7db497, #3e7355); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#7db497, #3e7355); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#7db497, #3e7355); /* Standard syntax */
+    box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+  }
+}
+
 .inner-text-shadow {
   color: transparent;
-  text-shadow: 0px 1px 1px rgba(255,255,255,0.95);
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;

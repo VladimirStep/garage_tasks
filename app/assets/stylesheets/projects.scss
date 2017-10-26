@@ -17,8 +17,7 @@
     .project-icon {
       margin: 9px 15px 0 20px;
       font-size: 26px;
-      color: #222222;
-      opacity: 0.5;
+      color: #315589;
     }
 
     .project-name {
@@ -72,6 +71,32 @@
   }
 
   .project-body {
+    .new-task {
+      height: 50px;
 
+      .new-task-icon {
+        background-color: #015010;
+        margin: 8px 15px 0 20px;
+        font-size: 26px;
+      }
+
+      form {
+        margin-top: 7px;
+        margin-right: 20px;
+
+        label.error {
+          position: absolute;
+          bottom: -32px;
+          left: 0px;
+          color: #B11112;
+          font-weight: normal;
+          z-index: 10;
+          background-color: white;
+          height: 27px;
+          border: 1px solid #b4b2aa;
+          padding: 3px 10px;
+        }
+      }
+    }
   }
 }
