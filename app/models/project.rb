@@ -9,9 +9,10 @@ class Project < ApplicationRecord
   scope :containing_letter_shows_tasks_count, -> (char) { where('name LIKE ?', ('%' + char + '%')).pluck(:name, :tasks_count) }
   scope :over_ten_completed_tasks, -> { joins(:tasks)
                                             .where('tasks.status = ?', 'completed')
-                                            .select('*')
-                                            .group('tasks.status')
-                                            .having('COUNT(*) > ?', 10) }
+                                            .group(:name)
+                                            .having('COUNT(*) > ?', 10)
+                                            .order(:id)
+                                            .count }
   
   def reorder_tasks(new_order)
     new_order.each_with_index {|id, index| self.tasks&.find(id.to_i)&.set_list_position(index + 1)}

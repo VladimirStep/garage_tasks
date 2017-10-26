@@ -10,10 +10,9 @@ class Task < ApplicationRecord
 
   scope :statuses_ordered_asc, -> { select(:status).distinct.order(status: :asc).pluck(:status) }
   scope :begins_with_letter, -> (char) { where('name LIKE ?', (char + '%')) }
-  scope :with_duplicate_names, -> { select(:name).group(:name).having('COUNT(*) > ?', 1).order(:name) }
+  scope :with_duplicate_names, -> { select(:name).group(:name).having('COUNT(*) > ?', 1).order(:name).pluck(:name) }
   scope :exact_match_from_project, -> (project_name) { joins(:project)
                                                            .where('projects.name = ?', project_name)
-                                                           .all
                                                            .group(:name, :status)
                                                            .having('COUNT(*) > ?', 1)
                                                            .order('COUNT(*)')
