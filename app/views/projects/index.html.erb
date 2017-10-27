@@ -6,7 +6,10 @@
         <div id="projects-list">
           <%= render @projects %>
         </div>
-        <%= link_to 'Add TODO List', projects_path, method: :post, class: 'btn btn-lg btn-primary', remote: true %>
+        <%= link_to projects_path, method: :post, class: 'btn btn-lg btn-blue-gradient', remote: true do %>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Add TODO List
+        <% end %>
       </div>
     </div>
   </div>
