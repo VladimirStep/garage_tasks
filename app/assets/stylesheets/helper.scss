@@ -77,3 +77,34 @@
     background-clip: text;
   }
 }
+
+.btn-red-gradient, .btn-red-gradient:focus, .btn-red-gradient:active {
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #cf504c;
+  background: #d9534f; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#e3534f, #cf514d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#e3534f, #cf514d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#e3534f, #cf514d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#e3534f, #cf514d); /* Standard syntax */
+  box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+  &:hover {
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #cf504c;
+    background: #d9534f; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#cf504c, #bb504c); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#cf504c, #bb504c); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#cf504c, #bb504c); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#cf504c, #bb504c); /* Standard syntax */
+    box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);
+  }
+  span.glyphicon {
+    color: #a74844;
+    font-size: 1.1em;
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+  }
+}
