@@ -1,4 +1,4 @@
-<div class="row" data-task-id="<%= task.id %>">
+<div class="task-item" data-task-id="<%= task.id %>">
   <% if controller_name == 'tasks' && action_name == 'edit' && task.id == @task.id %>
       <%= render partial: 'tasks/form', locals: { task: task } %>
   <% else %>

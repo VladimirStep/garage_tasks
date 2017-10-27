@@ -1,11 +1,6 @@
-<div class="col-xs-2"><%= task.status %></div>
-<div class="col-xs-4"><%= task.name %></div>
-<div class="col-xs-2"><%= task.deadline if task.deadline %></div>
-
-<div class="col-xs-2">
-  <%= link_to 'Up', up_project_task_path(task.project, task), remote: true %>
-  /
-  <%= link_to 'Down', down_project_task_path(task.project, task), remote: true %>
+<div class="col-xs-2 task-cell"><p><%= task.status %></p></div>
+<div class="col-xs-6 task-cell"><p><%= task.name %></p></div>
+<div class="col-xs-2 task-cell"><p class="text-right"><%= task.deadline.to_formatted_s(:short) if task.deadline %></p></div>
+<div class="col-xs-2 task-cell">
+  <%= render partial: 'tasks/links', locals: { task: task } %>
 </div>
-<div class="col-xs-1"><%= link_to 'Edit', edit_project_task_path(task.project, task), remote: true, class: 'btn btn-xs btn-default' %></div>
-<div class="col-xs-1"><%= link_to 'Delete', project_task_path(task.project, task), method: :delete, remote: true, class: 'btn btn-xs btn-danger' %></div>

@@ -5,7 +5,7 @@
 .project-item {
   background-color: white;
   margin: 50px 5px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   border: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -29,6 +29,23 @@
 
       form {
         margin-top: 7px;
+
+        .form-group {
+          position: relative;
+
+          label.error {
+            position: absolute;
+            bottom: -32px;
+            left: 0px;
+            color: #B11112;
+            font-weight: normal;
+            z-index: 10;
+            background-color: white;
+            height: 27px;
+            border: 1px solid #b4b2aa;
+            padding: 3px 10px;
+          }
+        }
       }
     }
 
@@ -49,7 +66,8 @@
         }
       }
       span.divider {
-        font-size: 28px;
+        font-size: 18px;
+        vertical-align: 12%;
       }
     }
 
@@ -85,6 +103,132 @@
         margin-right: 20px;
 
         label.error {
+          position: absolute;
+          bottom: -32px;
+          left: 0px;
+          color: #B11112;
+          font-weight: normal;
+          z-index: 10;
+          background-color: white;
+          height: 27px;
+          border: 1px solid #b4b2aa;
+          padding: 3px 10px;
+        }
+      }
+    }
+
+    .tasks-list {
+      .task-item {
+        height: 50px;
+        border-top: 1px solid #e9e9e9;
+        background-color: white;
+        color: #999999;
+        font-weight: bold;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: lightgoldenrodyellow;
+
+          .task-links {
+            color: #999999;
+
+            .arrows {
+              hr {
+                border-color: #999999;
+              }
+              a span {
+                color: #999999;
+
+                &:hover {
+                  color: #7a7a7a;
+                }
+              }
+            }
+
+            a span {
+              color: #999999;
+
+              &:hover {
+                color: #7a7a7a;
+              }
+            }
+          }
+        }
+
+        .task-links {
+          color: transparent;
+          font-size: 18px;
+
+          a {
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: none;
+            }
+
+            span {
+              color: transparent;
+              margin: 16px 2px 0 2px;
+            }
+          }
+          span.divider {
+            font-size: 16px;
+            font-weight: normal;
+            vertical-align: 20%;
+          }
+
+          .arrows {
+            width: 18px;
+            font-size: 10px;
+            display: inline-block;
+            margin-top: 10px;
+            vertical-align: -23%;
+
+            a span {
+              color: transparent;
+              margin: 0 4px;
+            }
+
+            hr {
+              border-color: transparent;
+              margin: 0;
+            }
+          }
+        }
+
+        &.ui-sortable-helper {
+          border-bottom: 1px solid #e9e9e9;
+          box-shadow: 0 1px 3px #b7b7b7;
+        }
+
+        .task-cell {
+          height: 50px;
+          border-left: 1px solid #e9e9e9;
+
+          &:first-child {
+            border-left: none;
+          }
+
+          p {
+            margin-top: 15px;
+          }
+
+          .form-group {
+            margin-bottom: 0;
+            margin-top: 7px;
+            position: relative;
+
+            .form-control {
+              font-weight: normal;
+            }
+          }
+        }
+
+        form label.error {
           position: absolute;
           bottom: -32px;
           left: 0px;

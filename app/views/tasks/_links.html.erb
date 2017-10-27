@@ -1,0 +1,19 @@
+<div class="task-links">
+  <div class="arrows">
+    <%= link_to up_project_task_path(task.project, task), remote: true do %>
+        <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+    <% end %>
+    <hr>
+    <%= link_to down_project_task_path(task.project, task), remote: true do %>
+        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+    <% end %>
+  </div>
+  <span class="divider">|</span>
+  <%= link_to edit_project_task_path(task.project, task), remote: true do %>
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+  <% end %>
+  <span class="divider">|</span>
+  <%= link_to project_task_path(task.project, task), method: :delete, remote: true do %>
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+  <% end %>
+</div>
