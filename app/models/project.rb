@@ -12,7 +12,8 @@ class Project < ApplicationRecord
                                             .group(:name)
                                             .having('COUNT(*) > ?', 10)
                                             .order(:id)
-                                            .count }
+                                            .count
+                                            .to_a }
   
   def reorder_tasks(new_order)
     new_order.each_with_index {|id, index| self.tasks&.find(id.to_i)&.set_list_position(index + 1)}

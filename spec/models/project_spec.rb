@@ -22,11 +22,10 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'scopes' do
-    let(:current_user) { create(:user) }
     it '.tasks_count_desc get the count fo all tasks in each project, order by tasks count desc' do
-      project1 = create(:project, user: current_user)
-      project2 = create(:project, user: current_user)
-      project3 = create(:project, user: current_user)
+      project1 = create(:project)
+      project2 = create(:project)
+      project3 = create(:project)
 
       2.times { create(:task, project: project1) }
       5.times { create(:task, project: project2) }
@@ -36,9 +35,9 @@ RSpec.describe Project, type: :model do
     end
 
     it '.tasks_count_order_by_project_name get the count fo all tasks in each project, order by project name' do
-      project1 = create(:project, user: current_user, name: 'BBB')
-      project2 = create(:project, user: current_user, name: 'AAA')
-      project3 = create(:project, user: current_user, name: 'CCC')
+      project1 = create(:project, name: 'BBB')
+      project2 = create(:project, name: 'AAA')
+      project3 = create(:project, name: 'CCC')
 
       2.times { create(:task, project: project1) }
       5.times { create(:task, project: project2) }
@@ -48,9 +47,9 @@ RSpec.describe Project, type: :model do
     end
 
     it '.containing_letter_shows_tasks_count get the list of all projects containing the letter "x" in the middle of the name, and show the tasks count near each project' do
-      project1 = create(:project, user: current_user, name: 'ABCD')
-      project2 = create(:project, user: current_user, name: 'EFGH')
-      project3 = create(:project, user: current_user, name: 'ACFH')
+      project1 = create(:project, name: 'ABCD')
+      project2 = create(:project, name: 'EFGH')
+      project3 = create(:project, name: 'ACFH')
 
       2.times { create(:task, project: project1) }
       5.times { create(:task, project: project2) }
@@ -60,9 +59,9 @@ RSpec.describe Project, type: :model do
     end
 
     it '.over_ten_completed_tasks get the list of project names having more then 10 tasks in status "completed", order by project_id' do
-      project1 = create(:project, user: current_user, name: 'Project 1')
-      project2 = create(:project, user: current_user, name: 'Project 2')
-      project3 = create(:project, user: current_user, name: 'Project 3')
+      project1 = create(:project, name: 'Project 1')
+      project2 = create(:project, name: 'Project 2')
+      project3 = create(:project, name: 'Project 3')
 
       25.times { create(:task, project: project1) }
       15.times { create(:task, project: project2) }
@@ -76,7 +75,7 @@ RSpec.describe Project, type: :model do
 
       Task.where(id: sample_ids).update_all(status: 'completed')
 
-      expect(Project.over_ten_completed_tasks).to eq({ project1.name => 16, project3.name => 11 })
+      expect(Project.over_ten_completed_tasks).to eq([[project1.name, 16], [project3.name, 11]])
     end
   end
 end
