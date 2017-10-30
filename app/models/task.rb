@@ -16,7 +16,8 @@ class Task < ApplicationRecord
                                                            .group(:name, :status)
                                                            .having('COUNT(*) > ?', 1)
                                                            .order('COUNT(*)')
-                                                           .count }
+                                                           .count
+                                                           .to_a }
 
   def set_defaults
     self.status = 'new'
