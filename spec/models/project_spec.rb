@@ -78,4 +78,28 @@ RSpec.describe Project, type: :model do
       expect(Project.over_ten_completed_tasks).to eq([[project1.name, 16], [project3.name, 11]])
     end
   end
+
+  describe 'public instance methods' do
+    context 'responds to its methods' do
+      it { should respond_to(:reorder_tasks) }
+    end
+
+    context 'executes methods correctly' do
+      it 'can reorder tasks' do
+        5.times { create(:task, project: project) }
+
+        old_order = project.tasks.order(:priority).pluck(:id)
+        expect(old_order).to eq(project.tasks.order(:id).pluck(:id))
+
+        new_order_ids = project.tasks.ids.shuffle
+        project.reorder_tasks(new_order_ids.map{ |id| id.to_s })
+
+        new_order = project.tasks.order(:priority).pluck(:id)
+
+        expect(old_order).to_not eq(new_order)
+        expect(new_order).to_not eq(project.tasks.order(:id).pluck(:id))
+        expect(new_order).to eq(project.tasks.find(new_order).pluck(:id))
+      end
+    end
+  end
 end
