@@ -7,6 +7,7 @@ class Task < ApplicationRecord
   validates :status, presence: true, inclusion: { in: %w(new in-progress completed) }, on: :update
 
   before_create :set_defaults
+  before_destroy :check_status
 
   scope :statuses_ordered_asc, -> { select(:status).distinct.order(status: :asc).pluck(:status) }
   scope :begins_with_letter, -> (char) { where('name LIKE ?', (char + '%')) }
@@ -21,5 +22,12 @@ class Task < ApplicationRecord
 
   def set_defaults
     self.status = 'new'
+  end
+
+  def check_status
+    unless self.status == 'completed'
+      errors.add(:base, :task_is_not_completed, message: "Task can not be deleted until it's completed")
+      throw(:abort)
+    end
   end
 end

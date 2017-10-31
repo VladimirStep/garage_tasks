@@ -27,10 +27,16 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @task.destroy
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js { render body: nil }
+      end
     end
   end
 
