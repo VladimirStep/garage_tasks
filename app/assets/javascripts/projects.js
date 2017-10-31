@@ -11,7 +11,6 @@ $(document).on("turbolinks:load", function(){
         });
 
         input_task_field.focusout(function(){
-            $(this).val('');
             current_form.validate().resetForm();
         });
 
