@@ -34,8 +34,8 @@ class TasksController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path }
-        format.js { render body: nil }
+        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @task } }
       end
     end
   end

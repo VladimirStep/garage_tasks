@@ -1,0 +1,3 @@
+<% if item.errors.any? %>
+  alert('<%= item.errors.full_messages.join("\n") %>');
+<% end %>

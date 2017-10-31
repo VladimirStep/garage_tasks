@@ -26,7 +26,7 @@ class Task < ApplicationRecord
 
   def check_status
     unless self.status == 'completed'
-      errors.add(:base, :task_is_not_completed, message: "Task can not be deleted until it's completed")
+      errors.add(:base, :task_is_not_completed, message: 'Task can not be deleted until it is not completed')
       throw(:abort)
     end
   end
