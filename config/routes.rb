@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :create, :edit, :update, :destroy] do
     resources :tasks, only: [:create, :edit, :update, :destroy] do
       member do
-        get 'up'
-        get 'down'
+        post 'up'
+        post 'down'
       end
       collection do
         post 'reorder'
