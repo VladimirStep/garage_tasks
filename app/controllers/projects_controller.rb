@@ -6,10 +6,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.create(name: 'New Project')
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @project = current_user.projects.create(name: 'New Project')
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @project } }
+      end
     end
   end
 
@@ -21,18 +27,30 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project.update_attributes(project_params)
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @project.update_attributes(project_params)
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @project } }
+      end
     end
   end
 
   def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @project.destroy
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @project } }
+      end
     end
   end
 

@@ -4,10 +4,16 @@ class TasksController < ApplicationController
   before_action :set_task, except: [:create, :reorder]
 
   def create
-    @task = @project.tasks.create(task_params)
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @task = @project.tasks.create(task_params)
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @task } }
+      end
     end
   end
 
@@ -19,10 +25,16 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update_attributes(task_params)
-    respond_to do |format|
-      format.html { redirect_to projects_path }
-      format.js
+    if @task.update_attributes(task_params)
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.js { render 'shared/errors', locals: { item: @task } }
+      end
     end
   end
 
