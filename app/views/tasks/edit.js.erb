@@ -9,6 +9,12 @@ $(function () {
         $(this).closest('form').submit();
     });
 
+    task_form.keyup(function(event){
+        if (event.keyCode == 13 || event.which == 13) {
+            task_form.submit();
+        }
+    });
+
     task_form.validate({
         submitHandler: function(form){
             $(form).trigger('submit.rails');
