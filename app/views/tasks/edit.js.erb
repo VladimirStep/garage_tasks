@@ -5,6 +5,8 @@ $(function () {
 
     var task_form = $('form.edit_task', task_row);
 
+    $('select', task_form).focus();
+
     $('.datetimepicker', task_form).focusout(function(){
         $(this).closest('form').submit();
     });
