@@ -15,6 +15,13 @@ $(function () {
         if (event.keyCode == 13 || event.which == 13) {
             task_form.submit();
         }
+        if (event.keyCode == 27 || event.which == 27) {
+            $.ajax({
+                url: '/projects/<%= @project.id %>/tasks/<%= @task.id %>',
+                method: 'GET',
+                dataType: 'script'
+            });
+        }
     });
 
     task_form.validate({

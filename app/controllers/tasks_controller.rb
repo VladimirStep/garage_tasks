@@ -21,6 +21,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    respond_to do |format|
+      format.html { render 'projects/index' }
+      format.js
+    end
+  end
+
   def edit
     respond_to do |format|
       format.html { render 'projects/index' }
