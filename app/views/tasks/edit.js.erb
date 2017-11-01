@@ -24,6 +24,17 @@ $(function () {
         }
     });
 
+    $(document).mouseup(function(event){
+        if (!task_row.is(event.target) && task_row.has(event.target).length === 0) {
+            $(document).unbind(event);
+            $.ajax({
+                url: '/projects/<%= @project.id %>/tasks/<%= @task.id %>',
+                method: 'GET',
+                dataType: 'script'
+            });
+        }
+    });
+
     task_form.validate({
         submitHandler: function(form){
             $(form).trigger('submit.rails');
