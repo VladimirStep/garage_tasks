@@ -14,7 +14,6 @@ RSpec.describe Task, type: :model do
     it { should validate_length_of(:name).is_at_least(2) }
     it { should validate_length_of(:name).is_at_most(50) }
     it { should validate_presence_of(:status).on(:update) }
-    it { should validate_inclusion_of(:status).in_array(%w(new in-progress completed)).on(:update) }
     it { should validate_presence_of(:priority).on(:update) }
   end
 
@@ -34,7 +33,7 @@ RSpec.describe Task, type: :model do
       Task.where(id: ids_for_completed).update_all(status: 'completed')
       Task.where(id: ids_for_inprogress).update_all(status: 'in-progress')
 
-      expect(Task.statuses_ordered_asc).to eq(['completed', 'in-progress', 'new'])
+      expect(Task.statuses_ordered_asc).to eq(['completed', 'in-progress', 'new task'])
     end
 
     it '.begins_with_letter get the tasks for all projects having the name beginning with "x" letter' do

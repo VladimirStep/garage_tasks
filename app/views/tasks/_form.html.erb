@@ -1,7 +1,7 @@
 <%= form_for task, url: project_task_path(task.project, task), remote: true do |form| %>
   <div class="col-xs-2 task-cell">
     <div class="form-group">
-      <%= form.select :status, %w(new in-progress completed), { include_blank: false, include_hidden: false }, { class: 'form-control' } %>
+      <%= form.select :status, Task.statuses.keys, { include_blank: false, include_hidden: false }, { class: 'form-control' } %>
     </div>
   </div>
   <div class="col-xs-6 task-cell">

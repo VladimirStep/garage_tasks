@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   scope :tasks_count_order_by_project_name, -> { order(:name).pluck(:tasks_count) }
   scope :containing_letter_shows_tasks_count, -> (char) { where('name LIKE ?', ('%' + char + '%')).pluck(:name, :tasks_count) }
   scope :over_ten_completed_tasks, -> { joins(:tasks)
-                                            .where('tasks.status = ?', 'completed')
+                                            .where(tasks: { status: 'completed' })
                                             .group(:name)
                                             .having('COUNT(*) > ?', 10)
                                             .order(:id)

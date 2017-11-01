@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :task do
     project
     sequence(:name) { |n| "Task #{n}" }
-    status 'new'
+    status 'new task'
   end
 end
