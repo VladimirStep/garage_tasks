@@ -2,8 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_projects
   before_action :set_project, except: [:index, :create]
 
-  def index
-  end
+  def index; end
 
   def create
     @project = @projects.create(name: 'New Project')
@@ -14,7 +13,10 @@ class ProjectsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @project.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@project) }
       end
     end
@@ -35,7 +37,10 @@ class ProjectsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @project.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@project) }
       end
     end
@@ -49,7 +54,10 @@ class ProjectsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @project.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@project) }
       end
     end

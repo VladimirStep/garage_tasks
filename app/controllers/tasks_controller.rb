@@ -12,7 +12,10 @@ class TasksController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @task.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@task) }
       end
     end
@@ -33,7 +36,10 @@ class TasksController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @task.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@task) }
       end
     end
@@ -47,7 +53,10 @@ class TasksController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
+        format.html do
+          redirect_to projects_path,
+                      alert: @task.errors.full_messages.join("\n")
+        end
         format.js { render_errors_for(@task) }
       end
     end
