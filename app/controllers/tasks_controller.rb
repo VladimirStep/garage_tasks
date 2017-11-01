@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   before_action :set_task, except: [:create, :reorder]
 
   def create
-    if @task = @project.tasks.create(task_params)
+    @task = @project.tasks.create(task_params)
+    if @task.persisted?
       respond_to do |format|
         format.html { redirect_to projects_path }
         format.js
@@ -12,7 +13,7 @@ class TasksController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @task } }
+        format.js { render_errors_for(@task) }
       end
     end
   end
@@ -33,7 +34,7 @@ class TasksController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @task } }
+        format.js { render_errors_for(@task) }
       end
     end
   end
@@ -47,7 +48,7 @@ class TasksController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @task.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @task } }
+        format.js { render_errors_for(@task) }
       end
     end
   end
@@ -97,7 +98,7 @@ class TasksController < ApplicationController
   end
 
   def set_project
-    @project = current_user.projects.find(params[:project_id])
+    @project = @projects.find(params[:project_id])
   end
 
   def set_task

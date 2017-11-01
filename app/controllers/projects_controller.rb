@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
-  before_action :set_projects, only: [:index, :edit]
+  before_action :set_projects
   before_action :set_project, except: [:index, :create]
 
   def index
   end
 
   def create
-    if @project = current_user.projects.create(name: 'New Project')
+    @project = @projects.create(name: 'New Project')
+    if @project.persisted?
       respond_to do |format|
         format.html { redirect_to projects_path }
         format.js
@@ -14,7 +15,7 @@ class ProjectsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @project } }
+        format.js { render_errors_for(@project) }
       end
     end
   end
@@ -35,7 +36,7 @@ class ProjectsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @project } }
+        format.js { render_errors_for(@project) }
       end
     end
   end
@@ -49,19 +50,19 @@ class ProjectsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to projects_path, alert: @project.errors.full_messages.join("\n") }
-        format.js { render 'shared/errors', locals: { item: @project } }
+        format.js { render_errors_for(@project) }
       end
     end
   end
 
   private
 
-  def set_project
-    @project = current_user.projects.find(params[:id])
-  end
-
   def set_projects
     @projects = current_user.projects
+  end
+
+  def set_project
+    @project = @projects.find(params[:id])
   end
 
   def project_params
