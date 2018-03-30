@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    command: rails server -p 3000 -b '0.0.0.0'
+    depends_on:
+     - db
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: garage_tasks_dev
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: 123456
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
