@@ -6,4 +6,3 @@ WORKDIR ${HOME}
 COPY Gemfile ${HOME}/Gemfile
 COPY Gemfile.lock ${HOME}/Gemfile.lock
 RUN bundle install
-COPY . ${HOME}
